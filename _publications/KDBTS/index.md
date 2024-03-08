@@ -10,8 +10,10 @@ venue: CVPR, 2023
 authors:
   - name: keonheehan
     affiliations: "1,2"
+    equal_contribution: True
   - name: dominikmuhle
     affiliations: "1,2"
+    equal_contribution: True
   - name: felixwimbauer
     affiliations: "1,2"
   - name: danielcremers

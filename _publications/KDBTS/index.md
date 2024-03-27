@@ -1,12 +1,12 @@
 ---
 layout: page
 permalink: publications/KDBTS/
-date: 2023_05_29 # determines sorting just take the date of the first publication as YYYY_MM_DD
-image: assets/teaser.png
+date: 2024_03_29 # determines sorting just take the date of the first publication as YYYY_MM_DD
+image: assets/teaserfigure1.pdf
 image_mouseover: assets/header_vid.mp4
 
-title: "Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares"
-venue: CVPR, 2023
+title: "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation"
+venue: CVPR, 2024
 authors:
   - name: keonheehan
     affiliations: "1,2"
@@ -17,16 +17,16 @@ authors:
   - name: felixwimbauer
     affiliations: "1,2"
   - name: danielcremers
-    affiliations: "1,2,3"
+    affiliations: "1,2"
 affiliations:
   - name: tum
     length: short
   - name: mcml
     length: long
-  - name: oxford
-    length: long
+%  - name: oxford
+%    length: long
 
-description: "A differentiable nonlinear least squares framework to account for uncertainty in relative pose estimation from feature correspondences regardless of the feature extraction algorithm of choice."
+description: "Boosting single-view scene completion by exploiting additional information from multiple images."
 
 links:
     - name: Project Page
@@ -35,13 +35,13 @@ links:
       link: https://arxiv.org/abs/2305.09527
       style: "bi bi-file-earmark-richtext"
     - name: Code
-      link: https://github.com/DominikMuhle/dnls_covs
+      link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
     - name: Video
-      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s
+      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s   %%
       style: "bi bi-youtube"
 
-citation: '@article{muhle2023dnls_covs,
+citation: '@article{muhle2023dnls_covs,     %%
   title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares},
   author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
   journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
@@ -57,11 +57,13 @@ acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON,
 Your browser does not support the video tag.
 </video>
 
-***Visual Odometry on KITTI.** Input image (top left), color-coded dense covariances (bottom left) and resulting trajectory (right). Color coding of the covariances is given by hue (size), orientation (color), and saturation (anisotropy). First sequence uses our supervised covariances, second sequence uses our unsupervised covariances.*
+***Knowledge Distillation from Multi-View to Single-View.** We propose to boost single-view scene completion by exploiting additional information from multiple images. a) we first train a novel multi-view scene reconstruction algorithm that is able to fuse density fields from multiple images in a fully self-supervised manner. b) we then employ knowledge distillation to directly supervise a state-of-the-art single-view reconstruction model in 3D to boost its performance*
 
 # Abstract
 
-We propose a differentiable nonlinear least squares framework to account for uncertainty in relative pose estimation from feature correspondences. Specifically, we introduce a symmetric version of the probabilistic normal epipolar constraint, and an approach to estimate the covariance of feature positions by differentiating through the camera pose estimation procedure. We evaluate our approach on synthetic, as well as the KITTI and EuRoC real-world datasets. On the synthetic dataset, we confirm that our learned covariances accurately approximate the true noise distribution. In real world experiments, we find that our approach consistently outperforms state-of-the-art non-probabilistic and probabilistic approaches, regardless of the feature extraction algorithm of choice.
+Inferring scene geometry from images via Structure from Motion is a long-standing and fundamental problem in com-
+puter vision. While classical approaches and, more recently, depth map predictions only focus on the visible parts of a scene, the task of scene completion aims to reason about geometry even in occluded regions. With the popu-
+larity of neural radiance fields (NeRFs), implicit representations also became popular for scene completion by predicting so-called density fields. Unlike explicit approaches e.g. voxel-based methods, density fields also allow for accurate depth prediction and novel-view synthesis via image based rendering. In this work, we propose to fuse the scene reconstruction from multiple images and distill this knowledge into a more accurate single-view scene reconstruction. To this end, we propose Multi-View Behind the Scenes(MVBTS) to fuse density fields from multiple posed images, trained fully self-supervised only from image data. Using knowledge distillation, we use MVBTS to train a single view scene completion network via direct supervision called KDBTS. It achieves state-of-the-art performance on occupancy prediction, especially in occluded regions.
 
 # Overview
 

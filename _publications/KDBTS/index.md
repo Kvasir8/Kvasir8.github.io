@@ -2,7 +2,7 @@
 layout: page
 permalink: publications/KDBTS/
 date: 2024_03_29 # determines sorting just take the date of the first publication as YYYY_MM_DD
-image: assets/teaserfigure1.pdf
+image: assets/teaser.png
 image_mouseover: assets/header_vid.mp4
 
 title: "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation"
@@ -23,8 +23,6 @@ affiliations:
     length: short
   - name: mcml
     length: long
-#  - name: oxford
-#    length: long
 
 description: "Boosting single-view scene completion by exploiting additional information from multiple images."
 
@@ -38,7 +36,7 @@ links:
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
     - name: Video
-      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s   ##
+      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s
       style: "bi bi-youtube"
 
 citation: '@article{muhle2023dnls_covs,

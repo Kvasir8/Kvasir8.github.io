@@ -23,8 +23,8 @@ affiliations:
     length: short
   - name: mcml
     length: long
-%  - name: oxford
-%    length: long
+#  - name: oxford
+#    length: long
 
 description: "Boosting single-view scene completion by exploiting additional information from multiple images."
 
@@ -38,10 +38,10 @@ links:
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
     - name: Video
-      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s   %%
+      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s   ##
       style: "bi bi-youtube"
 
-citation: '@article{muhle2023dnls_covs,     %%
+citation: '@article{muhle2023dnls_covs,
   title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares},
   author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
   journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},

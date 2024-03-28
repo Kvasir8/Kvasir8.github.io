@@ -50,11 +50,6 @@ acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON,
 # citation: "@{ASDF}"
 ---
 
-<video width="100%" autoplay muted loop>
-  <source src="./assets/header_vid.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
 ***Knowledge Distillation from Multi-View to Single-View.** We propose to boost single-view scene completion by exploiting additional information from multiple images. a) we first train a novel multi-view scene reconstruction algorithm that is able to fuse density fields from multiple images in a fully self-supervised manner. b) we then employ knowledge distillation to directly supervise a state-of-the-art single-view reconstruction model in 3D to boost its performance*
 
 # Abstract

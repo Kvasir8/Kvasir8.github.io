@@ -1,9 +1,9 @@
 ---
 layout: page
-permalink: publications/KDBTS/
-date: 2024_03_29 # determines sorting just take the date of the first publication as YYYY_MM_DD
+permalink: publications/kdbts/
+date: 2023_05_30 # determines sorting just take the date of the first publication as YYYY_MM_DD
 image: assets/teaser.png
-image_mouseover: assets/teaserfigure.pdf # assets/header_vid.mp4
+image_mouseover: assets/teaserfigure.pdf
 
 title: "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation"
 venue: CVPR, 2024
@@ -18,36 +18,20 @@ authors:
     affiliations: "1,2"
   - name: danielcremers
     affiliations: "1,2"
+
 affiliations:
   - name: tum
     length: short
   - name: mcml
     length: long
 
+
 description: "We propose to boost single-view scene completion by exploiting additional information from multiple images."
+
 
 links:
     - name: Project Page
-      link: publications/KDBTS/
-    - name: Paper
-      link: https://arxiv.org/abs/2305.09527
-      style: "bi bi-file-earmark-richtext"
-    - name: Code
-      link: https://github.com/keonhee-han/KDBTS
-      style: "bi bi-github"
-    - name: Video
-      link: https://www.youtube.com/watch?v=_wDUresP6v8&t=23s
-      style: "bi bi-youtube"
-
-citation: '@article{muhle2023dnls_covs,
-  title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares},
-  author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
-  journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2023},
-}'
-
-acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning and by the EPSRC Programme Grant VisualAI EP/T028572/1.'
-# citation: "@{ASDF}"
+      link: publications/kdbts/
 ---
 
 ***Knowledge Distillation from Multi-View to Single-View.** We propose to boost single-view scene completion by exploiting additional information from multiple images. a) we first train a novel multi-view scene reconstruction algorithm that is able to fuse density fields from multiple images in a fully self-supervised manner. b) we then employ knowledge distillation to directly supervise a state-of-the-art single-view reconstruction model in 3D to boost its performance*

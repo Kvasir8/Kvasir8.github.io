@@ -3,7 +3,7 @@ layout: page
 permalink: publications/kdbts/
 date: 2023_05_30 # determines sorting just take the date of the first publication as YYYY_MM_DD
 image: assets/teaser.png
-image_mouseover: assets/teaserfigure.pdf
+image_mouseover: assets/knowledge_distillation.png
 
 title: "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation"
 venue: CVPR, 2024

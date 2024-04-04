@@ -68,16 +68,14 @@ Inferring scene geometry from images via Structure from Motion is a long-standin
 
 # Aggregating Visilibity and Distillating its Knowledge 
 
-The proposed architecture is mainly exploit the multi-view posed images and directly supervise to single-view reconstruction model in knowledge distillation scheme. For handling multi-views input images, the network has a shared encoder and decoder backbone netowrk from <cite>[Behind The Scences][2]</cite> model. On top of the given model, a small multi-layer percpetron (MLP) $\phi_{SV}$ decodes the density from the feature vector embedded with its positional encoding. With this multi-view aware density prediction, the model has better grasp on the visibility awareness. We use our geometry prediction and image-based rendering techniques in a differentiable volumetric rendering pipeline to reconstruct images, allowing us to leverage a photometric reconstruction loss to train the networks, both backbone network and $\phi_{SV}$ MLP density decoding layer.
+The proposed architecture focuses on leveraging multi-view posed images to enhance single-view reconstruction through a knowledge distillation scheme. This innovative approach incorporates a shared encoder and decoder backbone network from the "Behind The Scenes" model to handle multi-view input images efficiently. Built upon this framework, a compact multi-layer perceptron (MLP) denoted as $\phi_{SV}$ decodes density from feature vectors with positional encoding, facilitating a more comprehensive understanding of visibility aspects within the model. The integration of multi-view-aware density prediction contributes to a deeper grasp of scene visibility nuances. Utilizing geometry prediction and image-based rendering techniques within a differentiable volumetric rendering pipeline enables the reconstruction of images, thus enabling the utilization of photometric reconstruction loss for network training.
 
-The main contribution is two fold:
-1. MVBTS: Density Field from Multiple Views
-2. KDBTS: Knowledge Distillation for Single-View Reconstruction
+The main contributions of this work can be summarized as follows:
 
 
 ## MVBTS
 
-We extend the single-view density prediction by replacing the $\phi_{SV}$ with a confidence-based multi-view architecture.
+This component extends single-view density prediction by introducing a confidence-based multi-view architecture. It leverages multiple input images to aggregate information effectively.
 
 $ \sigma_{\textbf{x}} = \phi_{MV}(t_0, \{f_{\textbf{u}^\prime_k}, \gamma(d_k, \textbf{u}^\prime_k)\}_{k\in I_D}) $
 
@@ -87,10 +85,7 @@ that is able to aggregate the information from the $|I_D|$ images.
 
 ![Overview](assets/overview.png)
 
-***Fig. 2. Overview.** Given multiple input images $\textbf{I}_k$ ($k \in I_D$) an encoder-decoder backbone predicts per image a pixel-aligned feature map $\textbf{F}_k$ (top left). The feature $f_{\textbf{u}}$ of pixel $\textbf{u}$ encodes the occupancy and confidence distribution of a ray cast through pixel $\textbf{u}$. Given a 3D point $\textbf{x}$ and its projections $\textbf{u}^\prime_k$ into the different camera images, we extract the corresponding feature vectors and positional embeddings $\gamma(d, \textbf{u})$. A multi-view network $\phi_\text{MV}$ decodes all feature vectors into a density prediction $\sigma_\textbf{x}$ (middle). Together with color samples from another image ($\textbf{I}_R$), this can be used to render novel views in an image-based rendering pipeline.*
-$\textbf{I}_R$ is not required to be close to the input images, as our method can predict density in occluded regions.
-% As our method predicts density in occluded regions, the color-sample images can come from views far away from the input images. 
-See \autoref{fig:training_setup} for more details about the importance of covering the whole scene. We train our networks by using a photometric consistency loss of an image $\textbf{I}_L$ close to $\textbf{I}_R$ (right).*
+***Fig. 2. Overview.** Given multiple input images $\textbf{I}_k$ ($k \in I_D$) an encoder-decoder backbone predicts per image a pixel-aligned feature map $\textbf{F}_k$ (top left). The feature $f_{\textbf{u}}$ of pixel $\textbf{u}$ encodes the occupancy and confidence distribution of a ray cast through pixel $\textbf{u}$. Given a 3D point $\textbf{x}$ and its projections $\textbf{u}^\prime_k$ into the different camera images, we extract the corresponding feature vectors and positional embeddings $\gamma(d, \textbf{u})$. A multi-view network $\phi_\text{MV}$ decodes all feature vectors into a density prediction $\sigma_\textbf{x}$ (middle). Together with color samples from another image ($\textbf{I}_R$), this can be used to render novel views in an image-based rendering pipeline. $\textbf{I}_R$ is not required to be close to the input images, as our method can predict density in occluded regions.
 
 ## KDBTS
 
@@ -98,21 +93,7 @@ See \autoref{fig:training_setup} for more details about the importance of coveri
 
 ***Fig. 3. Knowledge Distillation.** To improve the single-view (SV) density field reconstruction, we propose leveraging knowledge distillation from the multi-view (MV) predictions. Both $\phi_\text{SV}$ and $\phi_\text{MV}$ make use of the same encoder-decoder architecture and, therefore, the same feature vectors. The knowledge distillation loss $\mathcal{L}_\text{kd}$ pushes the $\phi_\text{SV}$ MLP to predict the same density as $\phi_\text{MV}$ while relying only upon a single feature vector. The stop gradient operator prevents $\mathcal{L}_\text{kd}$ influencing $\phi_\text{MV}$.*
 
-<!-- 
-Given the scene reconstructions from our multi-view model, we want to distill this knowledge into a single-view prediction model that can reconstruct the scene from fewer input data, e.g. a single image. We use the original BTS model architecture for our KDBTS. The motivation behind our knowledge distillation approach is threefold. 
-1. It reduces the network size, as the decoder is slightly smaller, speeding up the inference time.
-2. Removing the necessity of pose information at inference time. The advantage of single-view reconstruction is that it neither requires a calibrated stereo camera setup nor relative pose information from visual odometry systems to reconstruct the scene. 
-3. It leverages the advantages of self-supervised and supervised training. MVBTS can be trained on image data alone, allowing it to scale to vast amounts of data. This allows our method to be employed in the absence of ground truth data and still provide direct supervision by generating a pseudo ground truth.
-
-Given the input images $\textbf{I}_\text{I}$ and $\{\textbf{I}_k\}_{k \in D}$ for single- and multi-view, respectively,  $\sigma_{\textbf{x}, \text{SV}} = \phi_{SV}(f_{\textbf{u}^\prime_\text{I}}, \gamma(d_\text{I}, \textbf{u}^\prime_\text{I}))$ and 
-% $\sigma_{\textbf{x}, \text{MV}} = \phi_{MV}(t_0, \{f_{\textbf{u}^\prime_k}, \gamma(d_k, \textbf{u}^\prime_k)\}_{k \in I_D})$ 
-$\sigma_{\textbf{x}, \text{MV}} = \phi_{MV}(\{f_{\textbf{u}^\prime_k}, \gamma(d_k, \textbf{u}^\prime_k)\}_{k \in I_D})$ 
-should give the same density prediction for a 3D point $\textbf{x}$. In practice, we choose the input view $\textbf{I}_\text{I}$ for the single-view head to be from $\{\textbf{I}_k\}_{k \in D}$, but this is not strictly necessary. Knowledge distillation is then performed via a simple L1 loss
-
-$\mathcal{L}_{\text{kd}} = \|\sigma_{\textbf{x}, \text{MV}} - \sigma_{\textbf{x}, \text{SV}} $
- -->
-To avoid the multi-view head being influenced by the single-view prediction, we apply a stop gradient operator on $\sigma_{\textbf{x}, \text{MV}}$ to treat it as a pseudo ground truth.
-
+KDBTS (Knowledge Distillation for Single-View Reconstruction): With a focus on enhancing single-view density field reconstruction, this module proposes a knowledge distillation approach from multi-view predictions. By sharing the encoder-decoder architecture and feature vectors between $\phi_{SV}$ and $\phi_{MV}$, it ensures a consistent density prediction while significantly reducing computational overhead. Moreover, the integration of a stop gradient operator prevents the multi-view head from being influenced by the single-view prediction, enhancing the overall robustness of the model.
 
 # Results
 

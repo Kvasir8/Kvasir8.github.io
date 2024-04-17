@@ -57,7 +57,8 @@ acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON,
 
 ![Overview](assets/overview.png)
 
-***Figure 1. overview** Knowledge Distillation from Multi-View to Single-View.* 
+***Figure 1. Overview** Knowledge Distillation from Multi-View to Single-View.* 
+
 We propose to boost single-view scene completion by exploiting additional information from multiple images. a) we first train a novel multi-view scene reconstruction algorithm that is able to fuse density fields from multiple images in a fully self-supervised manner. b) we then employ knowledge distillation to directly supervise a state-of-the-art single-view reconstruction model in 3D to boost its performance.
 
 # Abstract
@@ -84,6 +85,7 @@ that is able to aggregate the information from the number of input images, |$I_\
 ![Pipeline](assets/pipeline.png)
 
 ***Figure 2. model pipeline.** Given multiple input images $\textbf{I}_k$ ($k \in I_D$) an encoder-decoder backbone predicts per image a pixel-aligned feature map $\textbf{F}_k$ (top left).*
+
 The feature $f_{\textbf{u}}$ of pixel $\textbf{u}$ encodes the occupancy and confidence distribution of a ray cast through pixel $\textbf{u}$. Given a 3D point $\textbf{x}$ and its projections $\textbf{u}^\prime_k$ into the different camera images, we extract the corresponding feature vectors and positional embeddings $\gamma(d, \textbf{u})$. A multi-view network $\phi_\text{MV}$ decodes all feature vectors into a density prediction $\sigma_\textbf{x}$ (middle). Together with color samples from another image ($\textbf{I}_R$), this can be used to render novel views in an image-based rendering pipeline. $\textbf{I}_R$ is not required to be close to the input images, as our method can predict density in occluded regions.
 
 ## KDBTS
@@ -92,8 +94,9 @@ The feature $f_{\textbf{u}}$ of pixel $\textbf{u}$ encodes the occupancy and con
 ![knowledge distillation](assets/knowledge_distillation.png)
 
 ***Figure 3. Knowledge Distillation.** To improve the single-view (SV) density field reconstruction, we propose leveraging knowledge distillation from the multi-view (MV) predictions.*
-Both $\phi_\text{SV}$ and $\phi_\text{MV}$ make use of the same encoder-decoder architecture and, therefore, the same feature vectors. The knowledge distillation loss $\mathcal{L}_\text{kd}$ pushes the $\phi_\text{SV}$ MLP to predict the same density as $\phi_\text{MV}$ while relying only upon a single feature vector. The stop gradient operator prevents $\mathcal{L}_\text{kd}$ influencing $\phi_\text{MV}$.
 
+Both $\phi_\text{SV}$ and $\phi_\text{MV}$ make use of the same encoder-decoder architecture and, therefore, the same feature vectors. The knowledge distillation loss $\mathscr{L}_\text{kd}$ pushes the $\phi_\text{SV}$ MLP to predict the same density as $\phi_\text{MV}$ while relying only upon a single feature vector. The stop gradient operator prevents $\mathscr{L}_\text{kd}$ influencing $\phi_\text{MV}$.
+\
 KDBTS (Knowledge Distillation for Single-View Reconstruction): With a focus on enhancing single-view density field reconstruction, this module proposes a knowledge distillation approach from multi-view predictions. By sharing the encoder-decoder architecture and feature vectors between $\phi_{SV}$ and $\phi_{MV}$, it ensures a consistent density prediction while significantly reducing computational overhead. Moreover, the integration of a stop gradient operator prevents the multi-view head from being influenced by the single-view prediction, enhancing the overall robustness of the model.
 
 # Results
@@ -105,6 +108,7 @@ We demonstrate the advantages of having multiple views to predict density fields
 ![Density Fields](assets/profile_ibrnet.png)
 
 ***Figure 4. Density Fields.** Top-down rendering of the density fields*
+
 This is for an area of $x = \left[-9m,9m\right]$, $y = \left[0m,1m\right]$, $z = \left[3m,23m\right]$. Images are taken from KITTI-360 (top half) and KITTI (bottom half) with profiles coming from models trained on KITTI-360. Every model except for MVBTS $(S, T)$ and <cite>[IBRnet][3]<cite> get the same input data. Our MVBTS can predict accurate geometry even in distant regions for both a single image and multiple images. KDBTS learns to recreate the accurate density structure from MVBTS. Both models reduce the amount of shadows produced by BTS, especially in distant regions. They also produce cleaner boundaries for close-by objects. Note that KDBTS has a smaller model capacity than MVBTS $(mono)$. $*$: changed sensitivity for visualization purposes, $\dagger$: retrained on KITTI-360.
 
 ## Depth Prediction
@@ -112,6 +116,7 @@ This is for an area of $x = \left[-9m,9m\right]$, $y = \left[0m,1m\right]$, $z =
 ![depth prediction](assets/depth_prediction_modified.png)
 
 ***Figure 5. Depth Prediction.** Qualitative comparison with state-of-the-art monocular depth prediction and other volumetric methods.*
+
 The expected ray termination depth $\hat{d}$ gives a detailed scene reconstruction.
 
 

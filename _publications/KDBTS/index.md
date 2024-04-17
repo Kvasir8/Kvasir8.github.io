@@ -113,7 +113,7 @@ This is for an area of $x = \left[-9m,9m\right]$, $y = \left[0m,1m\right]$, $z =
 
 ## Depth Prediction
 
-![depth prediction](assets/depth_prediction_modified.png)
+![depth prediction](assets/depth_prediction.png)
 
 ***Figure 5. Depth Prediction.** Qualitative comparison with state-of-the-art monocular depth prediction and other volumetric methods.*
 

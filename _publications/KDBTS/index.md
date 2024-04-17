@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: publications/kdbts/
-date: 2023_05_30 # determines sorting just take the date of the first publication as YYYY_MM_DD
-image: assets/teaser.png
+date: 2024_04_11 # determines sorting just take the date of the first publication as YYYY_MM_DD
+image: assets/overview.png
 image_mouseover: assets/knowledge_distillation.png
 
 title: "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation"
@@ -79,7 +79,7 @@ $ \sigma_{\textbf{x}} = \phi_{MV}(t_0, \{f_{\textbf{u}^\prime_k}, \gamma(d_k, \t
 
 $ \sigma_{\textbf{x}} = \phi_{MV}(\{f_{\textbf{u}^\prime_k}, \gamma(d_k, \textbf{u}^\prime_k)\}_{k\in I_D}) $
 
-that is able to aggregate the information from the $|I_D|$ images.
+that is able to aggregate the information from the number of input images, |$I_\text{D}$|.
 
 ![Pipeline](assets/pipeline.png)
 

@@ -21,7 +21,7 @@
 name: Keonhee Han
 email: keonhee.han@tum.de
 description: >- # this means to ignore newlines until "baseurl:"
-  TBD
+  I am a master thesis student at the Technical University of Munich. My research interests include 3D computer vision and scene reconstruction.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  keonhee-han

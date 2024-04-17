@@ -80,7 +80,7 @@ $ \sigma_{\textbf{x}} = \phi_{MV}(t_0, \{f_{\textbf{u}^\prime_k}, \gamma(d_k, \t
 
 $ \sigma_{\textbf{x}} = \phi_{MV}(\{f_{\textbf{u}^\prime_k}, \gamma(d_k, \textbf{u}^\prime_k)\}_{k\in I_D}) $
 
-that is able to aggregate the information from the number of input images, |$I_\text{D}$|.
+that is able to aggregate the information from the number of input images, $I_\text{D}$.
 
 ![Pipeline](assets/pipeline.png)
 
@@ -95,7 +95,7 @@ The feature $f_{\textbf{u}}$ of pixel $\textbf{u}$ encodes the occupancy and con
 
 ***Figure 3. Knowledge Distillation.** To improve the single-view (SV) density field reconstruction, we propose leveraging knowledge distillation from the multi-view (MV) predictions.*
 
-Both $\phi_\text{SV}$ and $\phi_\text{MV}$ make use of the same encoder-decoder architecture and, therefore, the same feature vectors. The knowledge distillation loss $\mathscr{L}_\text{kd}$ pushes the $\phi_\text{SV}$ MLP to predict the same density as $\phi_\text{MV}$ while relying only upon a single feature vector. The stop gradient operator prevents $\mathscr{L}_\text{kd}$ influencing $\phi_\text{MV}$.
+Both $\phi_\text{SV}$ and $\phi_\text{MV}$ make use of the same encoder-decoder architecture and, therefore, the same feature vectors. The knowledge distillation loss $L_\text{kd}$ pushes the $\phi_\text{SV}$ MLP to predict the same density as $\phi_\text{MV}$ while relying only upon a single feature vector. The stop gradient operator prevents $L_\text{kd}$ influencing $\phi_\text{MV}$.
 \
 KDBTS (Knowledge Distillation for Single-View Reconstruction): With a focus on enhancing single-view density field reconstruction, this module proposes a knowledge distillation approach from multi-view predictions. By sharing the encoder-decoder architecture and feature vectors between $\phi_{SV}$ and $\phi_{MV}$, it ensures a consistent density prediction while significantly reducing computational overhead. Moreover, the integration of a stop gradient operator prevents the multi-view head from being influenced by the single-view prediction, enhancing the overall robustness of the model.
 

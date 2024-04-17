@@ -38,20 +38,21 @@ links:
     - name: Code
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
-    # - name: Video
-    #   link: # after video was created
-    #   style: "bi bi-youtube"
-
-# citation: # insert citation when is published
-# citation: '@article{muhle2023dnls_covs,
-#   title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares},
-#   author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
-#   journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-#   year={2023},
-# }'
 
 
-acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning and by the EPSRC Programme Grant VisualAI EP/T028572/1. C. R. is supported by VisualAI EP/T028572/1 and ERC-UNION-CoG-101001212.'
+citation: '@inproceedings{han2024kdbts,
+ title = {Boosting Self-Supervision for Single-View Scene Completion
+ via Knowledge Distillation},
+ author = {K Han and D Muhle and F Wimbauer and D Cremers},
+ booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+ year = {2024},
+ eprint = {2404.07933},
+ eprinttype = {arXiv},
+ eprintclass = {cs.CV},
+}'
+
+
+acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning, and by the German Federal Ministry of Transport and Digital Infrastructure (BMDV) under grant 19F2251F for the ADAM project.'
 
 ---
 

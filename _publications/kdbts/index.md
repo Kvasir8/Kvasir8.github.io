@@ -33,11 +33,11 @@ links:
     - name: Project Page
       link: publications/kdbts/
     - name: Paper
-      link: https://arxiv.org/abs/2404.0793
+      link: https://arxiv.org/abs/2404.07933
       style: "bi bi-file-earmark-richtext"
-    - name: Code
-      link: https://github.com/keonhee-han/KDBTS
-      style: "bi bi-github"
+    #- name: Code
+    #  link: https://github.com/keonhee-han/KDBTS
+    #  style: "bi bi-github"
 
 
 citation: '@inproceedings{han2024kdbts,

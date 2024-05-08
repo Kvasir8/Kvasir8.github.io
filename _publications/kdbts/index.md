@@ -38,6 +38,9 @@ links:
     - name: Code
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
+    - name: Video
+      link: https://www.youtube.com/watch?v=Aj-KVMSpedw
+      style: "bi bi-youtube"
 
 
 citation: '@inproceedings{han2024kdbts,

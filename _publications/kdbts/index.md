@@ -39,7 +39,7 @@ links:
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
     - name: Video
-      link: https://www.youtube.com/watch?v=Aj-KVMSpedw
+      link: https://www.youtube.com/watch?v=_qjwLooM8gc
       style: "bi bi-youtube"
 
 

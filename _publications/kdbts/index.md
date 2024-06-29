@@ -39,7 +39,7 @@ links:
       link: https://github.com/keonhee-han/KDBTS
       style: "bi bi-github"
     - name: Video
-      link: https://www.youtube.com/watch?v=_qjwLooM8gc
+      link: https://www.youtube.com/watch?v=iWJmIwjtWfI
       style: "bi bi-youtube"
 
 
@@ -58,6 +58,14 @@ citation: '@inproceedings{han2024kdbts,
 acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning, and by the German Federal Ministry of Transport and Digital Infrastructure (BMDV) under grant 19F2251F for the ADAM project.'
 
 ---
+
+<video width="100%" autoplay muted loop>
+  <source src="./assets/kdbts_demo_small_size.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+***Video 1. Occupancy Prediction in Bird-Eye View.***
+
 
 ![Overview](assets/overview.png)
 
